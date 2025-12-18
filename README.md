@@ -65,18 +65,18 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                        INPUT SECTION                         │
+│                        INPUT SECTION                        │
 └─────────────────────────────────────────────────────────────┘
   [XLR IN] → [Balanced Receiver] → [LEVEL Att] → [Input Buffer]
                                                         ↓
 ┌─────────────────────────────────────────────────────────────┐
-│                         VCA SECTION                          │
+│                         VCA SECTION                         │
 └─────────────────────────────────────────────────────────────┘
   [Trim Gain] → [Rin Select: CLEAN/SAT] → [V2164 VCA] → [I/V]
                                               ↑
                                              CV
 ┌─────────────────────────────────────────────────────────────┐
-│                    SIDECHAIN & CV SECTION                    │
+│                    SIDECHAIN & CV SECTION                   │
 └─────────────────────────────────────────────────────────────┘
   [L+R Sum] ←→ [EXT SC IN]
       ↓
@@ -87,7 +87,7 @@
   [GR Meter Driver]
 
 ┌─────────────────────────────────────────────────────────────┐
-│                      OUTPUT SECTION                          │
+│                      OUTPUT SECTION                         │
 └─────────────────────────────────────────────────────────────┘
   [Makeup Gain] → [Dry/Wet Mix] → [DC Block] → [BAL OUT]
                                                    ↓
@@ -96,7 +96,7 @@
                                    [VU Meter]            [HP Amp]
 
 ┌─────────────────────────────────────────────────────────────┐
-│                    CONTROL & MONITORING                      │
+│                    CONTROL & MONITORING                     │
 └─────────────────────────────────────────────────────────────┘
   ● Threshold / Ratio / Attack / Release / Makeup
   ● SC-HPF / EXT SC / Stereo Link / SAT Mode
@@ -160,9 +160,9 @@ External SC Input：
 
 ```
 TS Tip ──[ R1: 1kΩ ]──┬──→ LEVEL Attenuator
-                       │
+                      │
                     [ D1: BAT54S ]
-                       │      （双方向ショットキークランプ）
+                      │      （双方向ショットキークランプ）
                       GND
 
 過大入力時の保護：
@@ -254,7 +254,7 @@ Gain = 1 + (R4 / R3)
 Input Buffer OUT
    │
    ├────[ R5: 33kΩ ]────┐
-   │                     ├─→ V2164 Pin1（Vin）
+   │                    ├─→ V2164 Pin1（Vin）
    └────[ R6: 12kΩ ]────┘
             ↑
          DPDT SW
@@ -288,10 +288,10 @@ Input Buffer OUT
 ```
         V2164
      ┌────────┐
-Vin ─┤1    16├─ V+（+15V）
-Iout─┤2    15├─ CV（制御電圧）
- NC ─┤3    14├─ NC
-GND ─┤4    13├─ GND
+Vin ─┤1     16├─ V+（+15V）
+Iout─┤2     15├─ CV（制御電圧）
+ NC ─┤3     14├─ NC
+GND ─┤4     13├─ GND
 （以下同様、4セル内蔵）
 ```
 
@@ -311,7 +311,7 @@ GND ─┤4    13├─ GND
 
 ```
 Pin16 ─┬─ 0.1µF ─┬─ GND
-       │          │
+       │         │
        └─ 10µF ──┘
 
 ※V2164直近（5mm以内）に配置
@@ -325,9 +325,9 @@ Pin16 ─┬─ 0.1µF ─┬─ GND
 
 ```
 CV Source ──[ R7: 1kΩ ]──┬──→ V2164 Pin15
-                          │
+                         │
                        [ BAT54 ]
-                          │
+                         │
                          GND
 ```
 
@@ -361,7 +361,7 @@ V2164 Pin2 ──────→ U2A(-)
 
 Feedback Network:
                  ┌─ Rf: 33kΩ 1% ─┐
-I/V OUT ─────────┤                ├──→ U2A(-)
+I/V OUT ─────────┤               ├──→ U2A(-)
                  └─ Cfb: 選択式 ─┘
 ```
 
@@ -372,8 +372,8 @@ I/V OUT ─────────┤                ├──→ U2A(-)
 ```
          JP1        JP2        JP3
 I/V OUT ─┬─ 22pF ─┬─ 33pF ─┬─ 47pF ─┐
-         │         │         │         ├─→ U2A(-)
-         └─────────┴─────────┴─────────┘
+         │        │        │        ├─→ U2A(-)
+         └────────┴────────┴────────┘
               ↑選択（1つのみショート）
 ```
 
@@ -473,10 +473,10 @@ External SC ──┘
 ```
          Position 1    Position 2    Position 3
 SC IN ───┬─ Direct ─┬─ 100nF + 10kΩ ─┬─ 100nF + 20kΩ ─→ Rectifier
-         │           │   (160Hz)       │   (80Hz)
-         └───────────┴─────────────────┘
-                     │                 │
-                    GND               GND
+         │          │   (160Hz)      │   (80Hz)
+         └──────────┴────────────────┘
+                     │               │
+                    GND             GND
 
 Rotary SW: 1P3T
   Position 1: Bypass（直結）
@@ -515,13 +515,13 @@ SC Signal ──[ R13: 10kΩ ]──┬──→ U3A(-)
 
 Stage 2: Inverter + Summer
 Half-Wave ──[ R15: 10kΩ ]──┬──→ U3B(-)
-                            │      |\
+                           │      |\
 SC Signal ──[ R16: 10kΩ ]──┤      | \
-                            │      |  }──→ Full-Wave OUT
-                         [ R17 ]   | /
-                          10kΩ     |/
-                            │      (+)
-                  U3B OUT ──┘      │
+                           │      |  }──→ Full-Wave OUT
+                         [ R17 ]  | /
+                          10kΩ    |/
+                           │      (+)
+                 U3B OUT ──┘      │
                                   GND
 ```
 
@@ -537,12 +537,12 @@ SC Signal ──[ R16: 10kΩ ]──┤      | \
 
 ```
 Full-Wave OUT ──[ R18: 10kΩ ]──┬──→ A/R Generator
-                                │
+                               │
                              [ D4 ]
-                                │
+                               │
                              [ C8 ]
                               1µF
-                                │
+                               │
                                GND
 ```
 
@@ -561,10 +561,10 @@ Full-Wave OUT ──[ R18: 10kΩ ]──┬──→ A/R Generator
 
 ```
 Peak Hold ──[ R19: 10kΩ ]──┬──→ U4A(+)
-                            │      |\
+                           │       |\
                          [ C9 ]    | \
                           100pF    |  }──→ Threshold OUT
-                            │      | /
+                           │       | /
                            GND     |/
                                    (-)
                                    │
@@ -595,12 +595,12 @@ Threshold Control:
 
 ```
 Threshold OUT ──[ Attack VR ]──┬──→ A/R Cap
-                 100kΩ Log      │
-                                ├─[ D5: 1N4148 ]
-                                │
+                 100kΩ Log     │
+                               ├─[ D5: 1N4148 ]
+                               │
                               [ C10 ]
                                10µF
-                                │
+                               │
                                GND
 ```
 
@@ -617,8 +617,8 @@ A/R Cap ──[ Release VR ]──[ D6: 1N4148 ]── GND
          Attack Cap Select (Rotary SW)
               ┌─ 100pF  (0.1ms)
               ├─ 330pF  (0.3ms)
-Threshold ───┼─ 1nF    (1ms)
-  OUT        ├─ 3.3nF  (3ms)
+Threshold ────┼─ 1nF    (1ms)
+  OUT         ├─ 3.3nF  (3ms)
               ├─ 10nF   (10ms)
               ├─ 33nF   (30ms)
               └─ 100nF  (100ms)
@@ -650,7 +650,7 @@ A/R Cap Voltage ──[ Comparator ]──[ FET Switch ]── Release VR Bypass
 **回路：**
 
 ```
-A/R OUT ──[ R20: 10kΩ ]──┬──→ U4B(+)
+A/R OUT ──[ R20: 10kΩ ]───┬──→ U4B(+)
                           │      |\
                        [ C11 ]   | \
                         100pF    |  }──→ CV_scaled
@@ -659,7 +659,7 @@ A/R OUT ──[ R20: 10kΩ ]──┬──→ U4B(+)
                                  (-)
                                  │
                          [ R21 ] │
-                         ───────┤
+                         ────────┤
                     ↑            │
               Ratio Select      GND
 
@@ -708,9 +708,9 @@ U4B OUT ─┬─ 5.1kΩ  ─┐
 
 ```
 CV_scaled ──┬─ Direct ────────┐
-            │                  ├─→ DPDT SW ─→ CV_final
+            │                 ├─→ DPDT SW ─→ CV_final
             └─[ 2×1N4148 ]    │   [Hard/Soft]
-                 (並列反転)   │
+                 (並列反転)    │
                      ↓        │
                 [ 10kΩ + 1µF ]│
                      ↓        │
@@ -727,12 +727,12 @@ CV_scaled ──┬─ Direct ────────┐
 **Unity Gain 調整機能付き CV バッファ：**
 
 ```
-CV_final ──[ R22: 10kΩ ]──┬──→ U5A(+)
-                           │      |\
-                        [ C12 ]   | \
-                         100pF    |  }──→ CV to V2164
-                           │      | /
-                          GND     |/
+CV_final ──[ R22: 10kΩ ]───┬──→ U5A(+)
+                           │       |\
+                        [ C12 ]    | \
+                         100pF     |  }──→ CV to V2164
+                           │       | /
+                          GND      |/
                                   (-)
                                    │
                           [ Unity Trim ]
@@ -778,9 +778,9 @@ CV_final ──[ R22: 10kΩ ]──┬──→ U5A(+)
 
 ```
 L ch CV_final ──┬────────────┐
-                │             ├─→ DPDT SW ─→ L ch V2164
+                │            ├─→ DPDT SW ─→ L ch V2164
                 ├─[ Max選択 ]│   [Link/Dual]
-                │   (Diode OR)│
+                │  (Diode OR)│
 R ch CV_final ──┴────────────┴─→ R ch V2164
 ```
 
@@ -788,7 +788,7 @@ R ch CV_final ──┴────────────┴─→ R ch V2164
 
 ```
 L CV ──[ D7: BAT54 ]──┐
-                       ├──→ Common CV
+                      ├──→ Common CV
 R CV ──[ D8: BAT54 ]──┘
 ```
 
@@ -809,8 +809,8 @@ R CV ──[ D8: BAT54 ]──┘
 **IC**：OPA2134（U6A）
 
 ```
-I/V OUT ──[ Rg: SAT連動 ]──┬──→ U6A(-)
-                               │      |\
+I/V OUT ──[ Rg: SAT連動 ]───────┬──→ U6A(-)
+　                        　　　│ 　　 |\
                             [ C13 ]   | \
                              100pF    |  }──→ Makeup OUT
                                │      | /
@@ -877,15 +877,15 @@ Makeup  ────┼─ 15kΩ   (+4dB)
 **IC**：OPA2134（U7A）
 
 ```
-Dry Signal ─────[ R23: 10kΩ ]───┬──→ U7A(-)
+Dry Signal ─────[ R23: 10kΩ ]────┬──→ U7A(-)
  (Input Buffer)                  │      |\
                                  │      | \
-Wet Signal ─────[ R24: 10kΩ ]───┤      |  }──→ Mix OUT
+Wet Signal ─────[ R24: 10kΩ ]────┤      |  }──→ Mix OUT
  (Makeup OUT)                    │      | /
                               [ R25 ]   |/
                                10kΩ     (+)
-                                │       │
-                      Mix OUT ──┘      GND
+                                 │       │
+                      Mix OUT ───┘      GND
 
 Standard Mix (固定):
   R23 = R24 = 10kΩ → Dry:Wet = 1:1
@@ -904,7 +904,7 @@ Input Buffer → [ All-Pass Filter ] → Dry Signal
 
 APF (1次):
            R26
-IN ──┬─── 10kΩ ───┬──→ U7B(+)
+IN ──┬─── 10kΩ ────┬──→ U7B(+)
      │             │      |\
    [ C14 ]      [ C15 ]   | \
     10pF         10pF     |  }──→ Delayed Dry
