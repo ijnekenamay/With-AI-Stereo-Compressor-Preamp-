@@ -180,34 +180,49 @@ Input Buffer
 ## 4. 全体信号フロー（俯瞰）
 
 ```text
-INPUT
- │
- ▼
-[Input Buffer]
- │
- ├───────────────┐
- │               │
- ▼               ▼
-[V/I Conv]   [Sidechain Pick]
- │               │
- ▼               ▼
-[SSI2164 VCA] [Rectifier → Thr → Ratio → A/R]
- │                               │
- ▼                               ▼
-[I/V Conv]                [CV Buffer + Trim]
- │                               │
- ▼                               │
-[Make-up Gain] <─────────────────┘
- │
- ├─── Dry ─────┐
- │             │
- ▼             ▼
-[Blend Pot]  (Dry)
- │
- ▼
-[Output Buffer]
- │
- OUTPUT
+[ INPUT L/R ]
+             │
+             ▼
+      [[ Input Buffer ]] (OPA1644等) ───┐
+             │                          │
+             ├─ (A) [Buffered Bypass] ──┼──────────────────────┐
+             │    (4PDT Switch: DRY)    │                      │
+             │                          │                      │
+             ├─ (B) [SC Pick-up]        │                      │
+             │       │                  │                      │
+             │       ▼                  │                      │
+             │  [ SC-HPF SW ] <Deep Punch>                     │
+             │       │                  │                      │
+             │       ▼                  │                      │
+             │  [[ Sidechain Section ]] │                      │
+             │   (Summing/Rect/A/R)     │                      │
+             │       │                  │                      │
+             │       ▼                  │                      │
+             │  [[ Stereo Link / CV ]] ─┼─── [ GR METER ]      │
+             │   (CV Buffer + Trim)     │                      │
+             │       │                  │                      │
+             ▼       │                  │                      │
+      [[ V/I Conv (R_in) ]]             │                      │
+             │       │ (Gain Control)   │                      │
+             ▼       ▼                  │                      │
+      [[ SSI2164 VCA Core ]]            │                      │
+             │                          │                      │
+             ▼                          │                      │
+      [[ I/V Conv / Make-up ]]          │                      │
+             │                          │                      │
+             ▼                          │                      │
+      [[ Blend Pot ]] <WET 100%> ◄──────┘                      │
+             │        (Parallel Compression)                   │
+             ▼                                                 │
+      [[ Output Buffer ]] (OPA1644等)                          │
+             │                                                 │
+             ├─ [ Saturation SW ] <Warmth & Punch>             │
+             │                                                 │
+             ▼                                                 │
+      [ 4PDT Switch ] (WET / DRY 切り替え) ◄────────────────────┘
+             │
+             ▼
+       [ OUTPUT L/R ]
 
 ```
 
