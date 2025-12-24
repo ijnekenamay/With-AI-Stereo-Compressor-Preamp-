@@ -232,131 +232,154 @@ INPUT
 
 ---
 
-### Input Buffer
+### Input BufferとV/I Converter（SSI2164入力）
 ```text
-          IN
-           │
-           │
-          1M
-           │
-           ▼
-        ┌─────┐
-        │  +  │
-        │ OP1 │────────┬───────→ Dry
-        │  -  │        │
-        └──┬──┘        │
-           │           │
-           └───────────┘
-                 GND
+(Input Jack)
+   │
+ [AUDIO_IN_L]
+   │
+   │           (+12V/15V)
+   │               ▲
+   │               │
+   │             ┌─┴─┐
+   ├───┐         │ + │
+   │   │      ┌──┤OP1│◄── TL074 / OPA1678
+  1M   │      │  │ - │
+   │   │      │  └─┬─┘
+  ┌┴┐  │      │    │
+  GND  │      │    │
+       │      │    │
+       └──────)───┬┴───────────────────────────→ [TO_SIDECHAIN_L]
+              │   │
+              │   │    R_in (Precision)
+              │   │      20k (1%)
+              │   └───/\/\/\/\/──┬─────────────→ [TO_VCA_IN_L] (Pin 2)
+              │                  │
+              │             Stability
+              │              Network
+              │             ┌────┴────┐
+              │             │         │
+              │            220        │
+              │             │         │
+              │           1200p       │
+              │             │         │
+              │            ┌┴┐       ┌┴┐
+              │            GND       GND
+              │
+              └────────────────────────────────→ [TO_BLEND_DRY_L]
 ```
 - 構成：ボルテージフォロワ
 - 出力は
 -- VCA用
 -- サイドチェイン用
 -- Dry用へ分岐
-
----
-
-### V/I Converter（SSI2164入力）
-```text
-OP1 OUT
-  │
-  │   20k
-  ├──/\/\/\───┬───────────→ SSI2164 Pin2
-  │            │
-  │           220
-  │            │
-  │          1200p
-  │            │
-  └────────────┴─────────── GND
-```
 - Stability Network：必須
 - Pin1（Mode）：OPEN
 
 ---
-
 ### SSI2164 VCA Core
 ```
-          CV (from sidechain)
-                │
-                ▼
-           SSI2164
-         ┌─────────┐
-Pin2 ◄───┤ IN       │
-Pin3 ◄───┤ CV       │
-Pin4 ───►┤ OUT      │
-         └─────────┘
+[TO_CV_BUFFER_OUT] (From Sidechain)
+                           │
+                           │ (Stereo Link)
+           ┌───────────────┴───────────────┐
+           │                               │
+           ▼                               ▼
+      (Pin 3: CV1)                    (Pin 6: CV2)
+ _______________________________________________________
+|                                                       |
+|                  SSI2164 / V2164                      |
+|                                                       |
+|  [CH 1 : LEFT]                      [CH 2 : RIGHT]    |
+|                                                       |
+|  Pin 2: IN <──[TO_VCA_IN_L]         Pin 7: IN <──[TO_VCA_IN_R]
+|                                                       |
+|  Pin 4: OUT ──>[TO_IV_CONV_L]       Pin 5: OUT ──>[TO_IV_CONV_R]
+|_______________________________________________________|
+       │      │      │             │      │      │
+       │Pin 1 │Pin 16│Pin 8        │Pin 9 │Pin 10-15
+       │ MODE │  V+  │ GND         │  V-  │ (Unused)
+       └──┬───┴──┬───┴──┬──────────┴──┬───┴───┬─────┐
+          │      │      │             │       │     │
+        (OPEN) (+15V)  ┌┴┐          (-15V)   20k   ┌┴┐
+        Class          GND                    │    GND
+          AB                                 ┌┴┐
+                                             GND
 ```
 - CV感度：−33mV/dB
+- 未使用CH (3 & 4): Pin 10, 15 (IN) は20kΩ経由でGNDへ。Pin 11, 14 (CV) は直接GNDへ。Pin 12, 13 (OUT) はオープン。
 
 ---
 
-### I/V Converter
+### I/V Converter & Make-up Gain (Left)
 ```text
-SSI2164 Pin4
+[TO_IV_CONV_L] (Pin 4)
       │
-      ▼
-     20k
+      │     R_fb (20k 1%)    C_fb (47p)
+      ├───/\/\/\/\/───────┤|├───┐
+      │                         │
+      │       ┌───┐             │
+      │       │ - │             │
+      └───────┤OP2│◄── I/V Amp  │
+              │ + │             │
+          ┌───┤   ├─────────────┴─┬──────────→ (Inverted Audio)
+          │   └───┘               │
+         ┌┴┐                      │
+         GND                      │
+                                  │
+      ┌───────────────────────────┘
       │
-      ▼
-   ┌─────┐
-   │  -  │
-   │ OP2 │───────────┐
-   │  +  │           │
-   └──┬──┘           │
+      │     R_mk_in (10k)
+      ├───/\/\/\/\/───┐
       │               │
-      └──── GND       │
-                      │
-                    47p
-                      │
-                      └─────── OP2 OUT
+      │           Make-up Gain Pot
+      │            100k (Lin/B)
+      │          ┌──/\/\/\──┐
+      │          │    ▲     │
+      │   R_fix  │    │     │
+      │    10k   │    │     │
+      ├──/\/\/\──┴────┘     │
+      │                     │
+      │       ┌───┐         │
+      │       │ - │         │
+      └───────┤OP3│◄── Gain Amp
+              │ + │             
+          ┌───┤   ├──────────────┬───────────→ [TO_BLEND_WET_L]
+          │   └───┘              │
+         ┌┴┐                     │
+         GND               (Phase Corrected)
 ```
-- 位相反転（後段で戻す）
-
+- ここで位相反転している
 ---
 
-### Make-up Gain
-```text
-OP2 OUT
-  │
-  │ 10k
-  ├─/\/\/\──┐
-  │         │
-  │       ┌─▼───┐
-  │       │  -  │
-  │       │ OP3 │───────────→ Wet
-  │       │  +  │
-  │       └─┬───┘
-  │         │
-  │        GND
-  │
-  └─/\/\/\─/\/\/\─┘
-    10k     100k(B)
-```
-- 最大 +20dB
-- 位相が正相に戻る
+### Blend & Output (Left)
 
----
-
-### Blend（Parallel Mix）
 ```text
-Dry ──┐
-      │
-     ┌┴─────┐
-     │  B   │ 25k / 50k(MN)
-     │ POT  │
-     └┬─────┘
-      │
-Wet ──┘
-      │
-      ▼
-   ┌─────┐
-   │ OP4 │  Voltage Follower
-   └──┬──┘
-      │
-     100
-      │
-    OUTPUT
+[TO_BLEND_DRY_L] ──────────────┐
+                               │
+                          [1]  │
+                        ┌──────┴──────┐
+                        │             │
+        Blend Pot       │  /\/\/\/\/  │
+      25k(B) or 50k(MN) │      ▲      │
+                        │      │      │
+                        └──────┬──────┘
+                          [3]  │ [2: Wiper]
+                               │
+[TO_BLEND_WET_L] ──────────────┘
+                               │
+                               │
+                               ▼
+                            ┌─────┐
+                            │  +  │
+                            │ OP4 │◄── Output Buffer
+                      ┌─────┤  -  │
+                      │     └─────┘
+                      │        │
+                      └────────┼────/\/\/\────→ [OUTPUT_JACK_L]
+                               │      100R
+                               │
+                              To Metering? (Optional)
 ```
 - 最大 +20dB
 - 位相が正相に戻る
@@ -367,79 +390,98 @@ Wet ──┘
 
 ---
 
-### サイドチェイン入力 & 整流
+### [SC-1] Summing & Rectifier (Full-Wave)
 ```text
-Input Buffer OUT
+[TO_SIDECHAIN_L] ──/\/\/\──┐ 47k
+                           │
+[TO_SIDECHAIN_R] ──/\/\/\──┼──────┐
+                     47k   │      │
+                           │    ┌─▼─┐
+                           │    │ - │
+                           └────┤ A │  (TL074 etc)
+                                │ + │
+                             ┌──┴─┬─┘
+                            ┌┴┐   │
+                            GND   │
+         ┌────────────────────────┘
+         │
+         │   10k           D1(1N4148)
+         ├──/\/\/\──┬───────►|───────┐
+         │          │                │
+         │          │     D2(1N4148) │
+         │        ┌─┴─┐      ┌───────│
+         │        │ - │      │       │
+         └────────┤ B │──────┘       │
+                  │ + │              │
+               ┌──┴─┬─┘              │
+              ┌┴┐   │                │
+              GND   │      10k       │
+                    └────/\/\/\──────┤
+                                     │
+                                     ▼
+                                [RECTIFIED_DC]
+```
+---
+
+### Threshold, Ratio, Timing
+```text
+[RECTIFIED_DC]
       │
-      │ 47k
-      ├─/\/\/\──┐
-      │          │
-      │        ┌─▼───┐
-      │        │ OP5 │
-      │        └─┬───┘
-      │          │
-      └──────────┘
-                 │
-        Precision Full-Wave
-           Rectifier
-        (1N4148 x2)
-                 │
-                 ▼
-              Rectified DC
+      │     Threshold Pot (10k B)
+      │        ┌──/\/\/\──┐
+      │        │    ▲     │
+      │       +V    │     │
+      │             │    ┌┴┐
+      │   100k      │    GND
+      ├──/\/\/\─────┤
+      │             │
+      │           ┌─▼─┐               Ratio Pot (50k B)
+      │           │ + │              ┌──/\/\/\──┐
+      └───────────┤ C │     ┌────────┤    ▲     │
+                  │ - │     │        │    │     │
+                  └─┬─┘     │        └───┬──────┘
+                    │       │            │
+                    └───────┴────────────┘
+                                         │
+                                         ▼
+                                  [TO_ATTACK_REL]
 ```
 ---
 
-### Threshold & Ratio
+### Attack / Release & CV Output
 ```text
-Rectified DC
-     │
-     ├───────────────┐
-     │               │
-    Thr            Ratio
-   10k(B)         50k(B)
-     │               │
-     └─────┬─────────┘
-           ▼
-        Gain Stage
-      (Variable k)
-```
----
-
-### Attack / Release
-```text
-Gain Stage OUT
+[TO_ATTACK_REL]
       │
-      ├─►|──┐  Attack
-      │      │
-      │     50k(A)
-      │      │
-      │     100Ω
-      │      │
-      │     ┌─▼─┐
-      │     │10µ│
-      │     └─┬─┘
-      │       │
-      └─|◄────┘  Release
-            │
-           1M(A)
-            │
-           GND
-```
----
-
-### CV Buffer & Scaling
-```text
-A/R OUT
-   │
-   ▼
-┌─────┐
-│ OP6 │  Voltage Follower
-└──┬──┘
-   │
-  10k (Trim)
-   │
-   ▼
-SSI2164 Pin3
+      │        Attack Pot (50k A)
+      │          ┌──/\/\/\──┐
+      │   D_atk  │    ▲     │
+      ├───►|─────┤    │     │    100R
+      │          └────┴─────┴───/\/\/\───┐
+      │                                  │
+      │                                  │
+      │        Release Pot (250k A)      │
+      │          ┌──/\/\/\──┐            │
+      │          │    ▲     │            │
+      └──────────┤    │     │            │
+                 └────┴─────┘            │
+                                       ──┴──  C_time
+                                       ──┬──  10uF (Tantalum)
+                                         │
+                                        ┌┴┐
+                                        GND
+                                         │
+                                         │
+                                       ┌─┴─┐
+                                       │ + │
+                                       │ D │ Buffer
+      [TO_METER_IN] ◄──────┬───────────┤ - │
+                           │           └─┬─┘
+                           │             │
+                    CV Trim (10k)        │
+                      ┌──/\/\/\──┐       │
+                      │    ▲     │       │
+      [TO_CV_BUFFER_OUT] ◄─┘     └───────┘
+       (To VCA Pin 3 & 6)
 ```
 ---
 
@@ -447,75 +489,43 @@ SSI2164 Pin3
 
 ---
 
-### Gain Reduction Meter（圧縮量表示）
+### 構成概要
+- IC: LM3914 (Linear Scale) Mode: Bar Mode (Dot modeの場合はPin9をオープン)─（既存）CV Trim → SSI2164
 
----
 
-#### 構成概要
+### LM3914 基本配線
 ```text
-CV Buffer OUT
-     │
-     ├─── 100k ───► LM3915 SIG IN
-     │
-     └───（既存）CV Trim → SSI2164
-```
----
-
-#### 回路への組み込み位置
-```text
-           ┌─────────────┐
-           │ Attack/Rel. │
-           └─────┬───────┘
-                 │
-            ┌────▼─────┐
-            │ CV Buffer│
-            └────┬─────┘
-                 │
-         ┌───────┴────────┐
-         │                │
-   ┌─────▼─────┐    ┌─────▼─────┐
-   │ CV Trim   │    │ LM3915     │
-   │ 10k       │    │ GR Meter   │
-   └─────┬─────┘    └───────────┘
-         │
- SSI2164 Pin3
-```
----
-
-#### LM3915 基本配線
-```text
-                +V (例: +12V)
-                  │
-                 1k8
-                  │
-                  ▼
-                REF OUT (Pin7)
-                  │
-                 10k
-                  │
-                 GND
-
-CV Buffer OUT
+[TO_METER_IN] (From SC Buffer)
       │
-     100k
       │
-      ▼
-SIG IN (Pin5)
+      │     Signal Adjust Trim (10k)
+      │      ┌──/\/\/\──┐
+      │      │    ▲     │
+      └──────┤    │     ├──────────┐
+             └────┴─────┘          │
+                                   │
+                                   ▼
+                             (Pin 5: SIG)
+                        ┌───────────────────┐
+ (+12V) ───┬────────────┤ Pin 3: V+         │
+           │            │                   │
+           │            │     LM3914        │
+           │            │                   │
+           │    ┌───────┤ Pin 9: MODE       │
+           │    │       │                   │
+           │   1k8      │ Pin 1: LED1 (Green) ───►|──┐
+           │    │       │ Pin 18: LED2 (Green) ───►|──┤
+           │    ▼       │  ...                        │
+           └─(Pin 7)    │ Pin 10: LED10 (Red) ────►|──┤
+           Ref Out      │                   (Cathodes)│
+                │       │                             │
+               10k      │ Pin 2: GND ─────────────────┤
+                │       │ Pin 8: Ref Adj ─────────────┤
+                ▼       └───────────────────┘         │
+               GND                                   ┌┴┐
+                                                     GND
 ```
-MODE (Pin9) ── GND     ← Dot mode
-           or +V       ← Bar mode
-
-LED1 (Pin10) ── Green
-LED2 (Pin11) ── Green
-LED3 (Pin12) ── Yellow
-LED4 (Pin13) ── Yellow
-LED5 (Pin14) ── Red
-LED6 (Pin15) ── Red
-(LED7/8 optional)
-
-GND (Pin2) ─── GND
-
-※ LEDには直列抵抗不要（LM3915内蔵）
+※ LEDには直列抵抗不要（LM3914内蔵）
 
 ---
 
