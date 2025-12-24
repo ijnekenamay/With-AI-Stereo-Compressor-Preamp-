@@ -1,0 +1,200 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "132f4570-4169-4ecf-b1f3-d724b5ad1d4e")
+	(paper "A4")
+	(title_block
+		(title "AI-Designed-Stereo-Compressor-Preamp")
+	)
+	(lib_symbols)
+	(text "Let's build the ultimate Stereo Compressor / Preamp with the help of generative AI!!!"
+		(exclude_from_sim no)
+		(at 146.812 24.638 0)
+		(effects
+			(font
+				(size 3.5 3.5)
+				(thickness 1)
+				(bold yes)
+			)
+		)
+		(uuid "6f6400b3-b8f9-4745-ba3e-acd5faf9cf9b")
+	)
+	(text "https://github.com/ijnekenamay/AI-Designed-Stereo-Compressor-Preamp/"
+		(exclude_from_sim no)
+		(at 168.91 60.96 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.3)
+				(bold yes)
+				(color 0 0 0 1)
+			)
+		)
+		(uuid "7c89ac6a-925c-46fe-b2f8-04696925c55d")
+	)
+	(text "For detailed specifications including box diagrams and ASCII circuit diagrams, please refer to the URL below."
+		(exclude_from_sim no)
+		(at 148.082 37.338 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.3)
+				(bold yes)
+				(color 0 0 0 1)
+			)
+		)
+		(uuid "f7b3ed2f-8fbb-43f9-8b3a-43e8e2b45861")
+	)
+	(image
+		(at 61.468 61.976)
+		(scale 0.469998)
+		(uuid "5711417d-8929-49af-b491-abbb239152e6")
+		(data "iVBORw0KGgoAAAANSUhEUgAAAPAAAADwAQMAAAAEm3vRAAAABlBMVEX///8AAABVwtN+AAAACXBI"
+			"WXMAAA7EAAAOxAGVKw4bAAABrElEQVRYhe2YUa6FIAxEyxfLYKeCO2UZftnXmYKY3LeAktgYr5fj"
+			"TzOdUhT54osokdXiFjmkNCnnZQ9SsdbDY/wceCot65374X/zBriqLRUDWPI3eN8DZ23U5lR72Av3"
+			"dJkkuKOeNsFCD8AJvsR6kg0wDQwZ1vXj75D4FRVidLv/H9GwGUCKWg0p8mnomJ2L4THLCMJcki7L"
+			"DTZIutILjiv3pzRTStaDdsDn5RcSE7i3qNLDwfHcmRo6JsWgHunxd1w8cnDgYgx5gmMIAA+YEuec"
+			"zEyS9BRTXCxUwoFQDJ8Penx8sGne6D7wA4ebV2KBcUUBFZ0eGK3z2WLD4jwKCN1nvieZA3FwPIp+"
+			"NP3EUd49HB2z9XCggZHbPIHMYoqM2ejZ4iv08Kp6ttjIGDnMjQon1TacvAHm0doPq4jKNnRLfMxd"
+			"yicDPnhVLcXC4vUSWo9yl5J1TA2Mx2EP//3IofxS8Mo7LEYCx6yehJlsvBQf0wD4cneLz8RgaR9s"
+			"GlQOB+5nEdkFe6OvnMnaGiVDY5HZenRMM/5dKTweBj45GTROlk3WRhUXf/FFhPgDsB90DnImZqEA"
+			"AAAASUVORK5CYII="
+		)
+	)
+	(sheet
+		(at 105.41 104.14)
+		(size 27.94 17.78)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "70f79156-bfaa-41cd-908b-75036421af07")
+		(property "Sheetname" "SSI2164 VCA Core"
+			(at 105.41 102.108 0)
+			(effects
+				(font
+					(size 2 2)
+					(thickness 0.4)
+					(bold yes)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "SSI2164.kicad_sch"
+			(at 105.41 122.5046 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "ADSCP"
+				(path "/132f4570-4169-4ecf-b1f3-d724b5ad1d4e"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 41.91 104.14)
+		(size 25.4 17.78)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "7f6738bd-b68d-439b-b411-d3be964c40bd")
+		(property "Sheetname" "Input Buffer and VI Converter（SSI2164 input）"
+			(at 24.384 102.362 0)
+			(effects
+				(font
+					(size 2 2)
+					(thickness 0.4)
+					(bold yes)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "inputbuffer.kicad_sch"
+			(at 41.91 122.5046 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "ADSCP"
+				(path "/132f4570-4169-4ecf-b1f3-d724b5ad1d4e"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 154.94 104.14)
+		(size 27.94 17.78)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "9a0a4327-39a8-4e8b-913c-f35a475a8204")
+		(property "Sheetname" "IV Converter & Make-up Gain"
+			(at 147.574 102.108 0)
+			(effects
+				(font
+					(size 2 2)
+					(thickness 0.4)
+					(bold yes)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "ivc_mug.kicad_sch"
+			(at 154.94 122.5046 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "ADSCP"
+				(path "/132f4570-4169-4ecf-b1f3-d724b5ad1d4e"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
