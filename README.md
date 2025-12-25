@@ -279,10 +279,10 @@ Top View (上から見た図)
                             _______  _______
               (MODE) Pin 1 |* \/            | Pin 16 (V+) <--- [+15V] & 0.1uFパスコン
       [VCA_IN_L] --> Pin 2 |                | Pin 15 (IN 4) <--- [20k抵抗] --- GND
-        [CV_IN]  --> Pin 3 |                | Pin 14 (CV 4) <--- GND
+      [CV_IN_L]  --> Pin 3 |                | Pin 14 (CV 4) <--- GND
 [VCA_OUT_L_TO_IV] -- Pin 4 |    SSI2164     | Pin 13 (OUT 4) <--- OPEN
 [VCA_OUT_R_TO_IV] -- Pin 5 |     V2164      | Pin 12 (OUT 3) <--- OPEN
-        [CV_IN]  --> Pin 6 |                | Pin 11 (CV 3) <--- GND
+      [CV_IN_R]  --> Pin 6 |                | Pin 11 (CV 3) <--- GND
       [VCA_IN_R] --> Pin 7 |                | Pin 10 (IN 3) <--- [20k抵抗] --- GND
            (GND) --> Pin 8 |________________| Pin 9  (V-) <--- [-15V] & 0.1uFパスコン
 ```
@@ -571,9 +571,9 @@ R_in (10k)   │   ┌────┐
                            
                              OP_D 出力
                                  │
-                                 ├──── [CV_Trim_L (10k)] ──→ [VCA Pin 3 (L)]
+                                 ├──── [CV_Trim_L (10k)] ──→ [CV_IN_L]
                                  │
-                                 └──── [CV_Trim_R (10k)] ──→ [VCA Pin 6 (R)]
+                                 └──── [CV_Trim_R (10k)] ──→ [CV_IN_R]
 ```
 - ステレオリンク: 左右の検波信号が OP_A でサミングされ、1つの C_time（タイミング用コンデンサ）を共有して1つの OP_D（CVバッファ）から左右のVCAへ送られるため、完璧に同期します。
 - D_atk(1N4148)
