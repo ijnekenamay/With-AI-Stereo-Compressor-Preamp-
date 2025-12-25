@@ -13,9 +13,7 @@
 
 ## 1. 全体構成図（オーディオ・パス）
 
-本機はモノラル構成の VCA コンプレッサーであり、  
-各ブロックは以下の順序で信号処理を行う。  
-最終出力は正相（In-Phase）とする。
+本機はステレオ構成の VCA コンプレッサーであり、各ブロックは以下の順序で信号処理を行う。最終出力は正相（In-Phase）とする。
 
 Input Buffer  
 → V/I Converter  
@@ -24,7 +22,6 @@ Input Buffer
 → Make-up Gain  
 → Blend（Parallel Mix）  
 → Output Buffer  
-
 
 ## 2. メイン基板：オーディオ・パス詳細
 
@@ -521,13 +518,13 @@ LとRの信号を混ぜて、検波（プラスのDCに変換）する段階で�
                                   [TO_ST_LINK_TIMING]
 ```
 - Threshold Pot
-  - 1番 → +V（例：+15V or +12V）
+  - 1番 → +V（+15V）
   - 3番 → GND
-  - 2番 → OP_C の +入力（非反転入力）
+  - 2番 → OP_C の −入力（Thresholdオフセット）
 - OP_C の基本動作
-  - +入力：Threshold 電圧（+15Vをpotで調整）
-  - −入力：RECTIFIED_DC（音量）
-- Threshold Pot
+  - +入力：RECTIFIED_DC（音量）
+  - −入力：Threshold Pot + Ratio Pot（帰還）
+- Ratio Pot
   - 1番 → OP_C 出力
   - 3番 → OP_C の−入力
   - 2番 → OP_C の−入力（可変帰還抵抗）
@@ -537,14 +534,14 @@ LとRの信号を混ぜて、検波（プラスのDCに変換）する段階で�
 [TO_ST_LINK_TIMING] (From Ratio Out)
       │
       │   [[ Stereo Link & Timing Section ]]
-      │
-      ├───────►|───────┬───/\/\/\────┐  (D_atk & Attack Pot)
-      │     D_atk      │   Atk_Pot   │
-      │                │  (2連/Dual) │
-      │                └─────────────┤
-      │                              │  [Point X]
-      ├───────/\/\/\─────────────────┤ (Release Pot 2連/Dual)
-      │       Rel_Pot                │
+      │          R_protect_atk 
+      ├───────►|───(220R)───/\/\/\───┐  (D_atk & Attack Pot)
+      │     D_atk          Atk_Pot   │
+      │                   (2連/Dual) │
+      │                              │
+      │ R_protect_rel                │  [Point X]
+      ├──(470R)─/\/\/\───────────────┤ (Release Pot 2連/Dual)
+      │        Rel_Pot               │
       │                              ├─────┬──────→ [TO_METER_IN]
       │                              │     │        (0V ~ プラス電圧)
       │                            ──┴──   │
@@ -583,9 +580,9 @@ R_in (10k)   │   ┌────┐
   - A 3番：D_atk の後段（入力側）
   - A 2番：Point X（C_time ノード）
   - A 1番：Point X（C_time ノード）
-  - R 3番：D_atk の前段（＝Ratio 側の出力ノード）
-  - R 2番：Point X（C_time ノード）
-  - R 1番：Point X（C_time ノード）
+  - R 3番：Ratio Out（D_atk 前）
+  - R 2番：Point X
+  - R 1番：Point X
 - OP_Dの接続
   - 非反転入力（＋）：GND
   - 反転入力（−）：
