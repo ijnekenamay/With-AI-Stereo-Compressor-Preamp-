@@ -8,6 +8,30 @@
 		(title "AI-Designed-Stereo-Compressor-Preamp")
 	)
 	(lib_symbols)
+	(rectangle
+		(start 25.4 93.98)
+		(end 212.09 130.81)
+		(stroke
+			(width 1)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(uuid fc4f391e-b827-421c-96b7-8d67a1251cdd)
+	)
+	(rectangle
+		(start 25.4 148.59)
+		(end 170.18 185.42)
+		(stroke
+			(width 1)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(uuid fdc3c26d-2e5f-410d-99b4-297059345cb0)
+	)
 	(text "Let's build the ultimate Stereo Compressor / Preamp with the help of generative AI!!!"
 		(exclude_from_sim no)
 		(at 146.812 24.638 0)
@@ -19,6 +43,18 @@
 			)
 		)
 		(uuid "6f6400b3-b8f9-4745-ba3e-acd5faf9cf9b")
+	)
+	(text "Audio path schematics"
+		(exclude_from_sim no)
+		(at 61.214 88.9 0)
+		(effects
+			(font
+				(size 4 4)
+				(thickness 0.8)
+				(bold yes)
+			)
+		)
+		(uuid "7a0cb1d9-6c51-473e-b637-5f75ebfa3df9")
 	)
 	(text "https://github.com/ijnekenamay/AI-Designed-Stereo-Compressor-Preamp/"
 		(exclude_from_sim no)
@@ -32,6 +68,18 @@
 			)
 		)
 		(uuid "7c89ac6a-925c-46fe-b2f8-04696925c55d")
+	)
+	(text "Side chain schematics"
+		(exclude_from_sim no)
+		(at 59.69 143.256 0)
+		(effects
+			(font
+				(size 4 4)
+				(thickness 0.8)
+				(bold yes)
+			)
+		)
+		(uuid "86a31627-1231-407a-8490-1ff509c7ad40")
 	)
 	(text "For detailed specifications including box diagrams and ASCII circuit diagrams, please refer to the URL below."
 		(exclude_from_sim no)
@@ -63,7 +111,93 @@
 		)
 	)
 	(sheet
-		(at 105.41 104.14)
+		(at 41.91 158.75)
+		(size 25.4 17.78)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "0b4d4bfd-31c8-4c19-84f1-17153586bb4a")
+		(property "Sheetname" "Sidechain 1 - Summing & Rectifier"
+			(at 29.972 156.972 0)
+			(effects
+				(font
+					(size 2 2)
+					(thickness 0.4)
+					(bold yes)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sidechain1.kicad_sch"
+			(at 41.148 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "ADSCP"
+				(path "/132f4570-4169-4ecf-b1f3-d724b5ad1d4e"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 168.91 104.14)
+		(size 29.21 17.78)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "47de73ca-0318-4417-b2e7-58ec17641450")
+		(property "Sheetname" "Blend & Output"
+			(at 171.196 102.108 0)
+			(effects
+				(font
+					(size 2 2)
+					(thickness 0.4)
+					(bold yes)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "blend_and_output.kicad_sch"
+			(at 168.91 122.5046 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "ADSCP"
+				(path "/132f4570-4169-4ecf-b1f3-d724b5ad1d4e"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 83.82 104.14)
 		(size 27.94 17.78)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -78,7 +212,7 @@
 		)
 		(uuid "70f79156-bfaa-41cd-908b-75036421af07")
 		(property "Sheetname" "SSI2164 VCA Core"
-			(at 105.41 102.108 0)
+			(at 83.82 102.108 0)
 			(effects
 				(font
 					(size 2 2)
@@ -89,7 +223,7 @@
 			)
 		)
 		(property "Sheetfile" "SSI2164.kicad_sch"
-			(at 105.41 122.5046 0)
+			(at 83.82 122.5046 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -120,8 +254,8 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "7f6738bd-b68d-439b-b411-d3be964c40bd")
-		(property "Sheetname" "Input Buffer and VI Converter（SSI2164 input）"
-			(at 24.384 102.362 0)
+		(property "Sheetname" "Input Buffer and VI Converter"
+			(at 32.766 101.854 0)
 			(effects
 				(font
 					(size 2 2)
@@ -149,7 +283,7 @@
 		)
 	)
 	(sheet
-		(at 154.94 104.14)
+		(at 127 104.14)
 		(size 27.94 17.78)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -164,7 +298,7 @@
 		)
 		(uuid "9a0a4327-39a8-4e8b-913c-f35a475a8204")
 		(property "Sheetname" "IV Converter & Make-up Gain"
-			(at 147.574 102.108 0)
+			(at 119.634 102.108 0)
 			(effects
 				(font
 					(size 2 2)
@@ -175,7 +309,7 @@
 			)
 		)
 		(property "Sheetfile" "ivc_mug.kicad_sch"
-			(at 154.94 122.5046 0)
+			(at 127 122.5046 0)
 			(effects
 				(font
 					(size 1.27 1.27)

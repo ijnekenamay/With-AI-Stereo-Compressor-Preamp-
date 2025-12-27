@@ -1280,7 +1280,7 @@
 	)
 	(global_label "+15V"
 		(shape input)
-		(at 64.77 123.19 90)
+		(at 64.77 121.92 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1290,7 +1290,7 @@
 		)
 		(uuid "006b74f2-6135-4e28-b9db-24995fd6b3e1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 64.77 115.1248 90)
+			(at 64.77 113.8548 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1344,7 +1344,7 @@
 			)
 		)
 	)
-	(global_label "TO_SIDECHAIN_R"
+	(global_label "SIDECHAIN_R"
 		(shape input)
 		(at 187.96 66.04 0)
 		(fields_autoplaced yes)
@@ -1356,7 +1356,7 @@
 		)
 		(uuid "300cb2e2-15d2-4d10-9d70-27b6c5c98dbf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 206.3062 66.04 0)
+			(at 203.0405 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1366,7 +1366,7 @@
 			)
 		)
 	)
-	(global_label "TO_BLEND_DRY_R"
+	(global_label "BLEND_DRY_R"
 		(shape input)
 		(at 187.96 69.85 0)
 		(fields_autoplaced yes)
@@ -1378,7 +1378,7 @@
 		)
 		(uuid "4c5cf53e-70e0-4a49-a68b-14bf68552abe")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 207.0923 69.85 0)
+			(at 203.8266 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1390,7 +1390,29 @@
 	)
 	(global_label "-15V"
 		(shape input)
-		(at 64.77 138.43 270)
+		(at 97.79 138.43 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "56359e17-7c11-48cc-9b8d-12d3418550e0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 97.79 146.4952 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-15V"
+		(shape input)
+		(at 64.77 137.16 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1400,7 +1422,7 @@
 		)
 		(uuid "6966c2fb-e2ce-4555-bdcb-a6be1222cff1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 64.77 146.4952 90)
+			(at 64.77 145.2252 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1432,7 +1454,7 @@
 			)
 		)
 	)
-	(global_label "TO_BLEND_DRY_L"
+	(global_label "BLEND_DRY_L"
 		(shape input)
 		(at 111.76 68.58 0)
 		(fields_autoplaced yes)
@@ -1444,7 +1466,7 @@
 		)
 		(uuid "8ab7c8da-b67d-4d1e-a897-da1337b9731a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 130.6504 68.58 0)
+			(at 127.3847 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1476,6 +1498,28 @@
 			)
 		)
 	)
+	(global_label "+15V"
+		(shape input)
+		(at 97.79 123.19 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "96363f2f-9a25-4f74-ae8c-c2718529a680")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 97.79 115.1248 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "TO_VCA_IN_R"
 		(shape input)
 		(at 187.96 73.66 0)
@@ -1498,7 +1542,7 @@
 			)
 		)
 	)
-	(global_label "TO_SIDECHAIN_L"
+	(global_label "SIDECHAIN_L"
 		(shape input)
 		(at 111.76 64.77 0)
 		(fields_autoplaced yes)
@@ -1510,7 +1554,7 @@
 		)
 		(uuid "a11a706a-406e-4e98-a3e2-2bb234cf7409")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 129.8643 64.77 0)
+			(at 126.5986 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1813,32 +1857,34 @@
 	)
 	(symbol
 		(lib_id "Device:Opamp_Quad")
-		(at 203.2 130.81 0)
-		(unit 3)
+		(at 100.33 130.81 0)
+		(unit 5)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "3a73568b-8902-4d40-97ff-35ca5808ae93")
-		(property "Reference" "U3"
-			(at 203.2 120.65 0)
+		(uuid "40147f47-9d34-44ee-976a-b4a66fd7670c")
+		(property "Reference" "U4"
+			(at 99.06 129.5399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "Opamp_Quad"
-			(at 203.2 123.19 0)
+		(property "Value" "TL074"
+			(at 99.06 132.0799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
-			(at 203.2 130.81 0)
+			(at 100.33 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1847,7 +1893,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 203.2 130.81 0)
+			(at 100.33 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1856,7 +1902,7 @@
 			)
 		)
 		(property "Description" "Quad operational amplifier"
-			(at 203.2 130.81 0)
+			(at 100.33 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1865,7 +1911,7 @@
 			)
 		)
 		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
-			(at 203.2 130.81 0)
+			(at 100.33 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1874,7 +1920,7 @@
 			)
 		)
 		(property "Sim.Name" "kicad_builtin_opamp_quad"
-			(at 203.2 130.81 0)
+			(at 100.33 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1883,7 +1929,7 @@
 			)
 		)
 		(property "Sim.Device" "SUBCKT"
-			(at 203.2 130.81 0)
+			(at 100.33 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1892,7 +1938,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vcc 5=in2+ 6=in2- 7=out2 8=out3 9=in3- 10=in3+ 11=vee 12=in4+ 13=in4- 14=out4"
-			(at 203.2 130.81 0)
+			(at 100.33 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1900,53 +1946,53 @@
 				(hide yes)
 			)
 		)
-		(pin "9"
-			(uuid "e2428854-df8c-4982-a68d-016bfc8f7fc8")
-		)
-		(pin "12"
-			(uuid "67bccef6-9a7f-47ee-a974-4909c085b96d")
-		)
-		(pin "6"
-			(uuid "6bb5721d-e61a-44db-96e8-6a93498ba722")
-		)
-		(pin "1"
-			(uuid "e939ced4-9187-46bd-84ba-0a7539f98b8e")
-		)
-		(pin "11"
-			(uuid "893a3e4d-2a80-4d32-88a0-6fabb2ccb4a6")
-		)
-		(pin "4"
-			(uuid "53c0afbc-d271-49fd-b5d5-068f34be3778")
-		)
-		(pin "13"
-			(uuid "b9c93450-0ca4-442c-94c8-1d245e5fb957")
-		)
-		(pin "7"
-			(uuid "94ebe32a-cecf-4001-b36e-6bf0fc9b05cf")
-		)
-		(pin "5"
-			(uuid "55700557-aa9d-4d93-bfc2-225fe021eeb8")
-		)
-		(pin "2"
-			(uuid "3190d284-c586-4969-94cc-3d272883431a")
-		)
-		(pin "3"
-			(uuid "51bba360-2285-42da-bfeb-e8cc5b8263f5")
-		)
 		(pin "10"
-			(uuid "bd02d6c4-3f8a-4383-bb19-9fbb0dea120c")
+			(uuid "d76a9428-2f70-4c6e-a7b0-f72f719b5cbf")
 		)
 		(pin "8"
-			(uuid "a4c90b7c-69c3-4272-b5b2-31f7dddb6e2c")
+			(uuid "d5c8cf62-8c87-4fa0-be4d-ccc9a6922084")
+		)
+		(pin "12"
+			(uuid "55dc6983-d9e2-440f-8ca2-104fe0c40950")
+		)
+		(pin "4"
+			(uuid "f966153f-8432-46fb-97c3-04c893d07c46")
+		)
+		(pin "6"
+			(uuid "4c4521c3-839d-4b03-8b56-1867f594e519")
+		)
+		(pin "5"
+			(uuid "75084406-280d-4083-b7bb-ee7d38c515c8")
+		)
+		(pin "1"
+			(uuid "253e8a80-f23f-4915-b8d5-5d78814108e0")
+		)
+		(pin "7"
+			(uuid "c0b73273-1634-40f7-b4e0-3600b4cb9f56")
+		)
+		(pin "9"
+			(uuid "d0c600e8-d340-43b5-af00-1ef888d06b0f")
+		)
+		(pin "2"
+			(uuid "d21aa587-bed5-413d-a835-ee33f71f20bf")
 		)
 		(pin "14"
-			(uuid "534dbb28-8ded-486e-8f9c-bf1ddf0d5f4a")
+			(uuid "e82a2fd2-86f8-4e8c-9a4c-c068cc95b491")
+		)
+		(pin "13"
+			(uuid "cf7dfd83-4697-4036-80d2-6c7124417a68")
+		)
+		(pin "3"
+			(uuid "0f15ffae-ed79-4949-8f84-5761b554b333")
+		)
+		(pin "11"
+			(uuid "f15d295f-1846-44cd-ac96-9d64438c0b5b")
 		)
 		(instances
-			(project ""
+			(project "ADSCP"
 				(path "/132f4570-4169-4ecf-b1f3-d724b5ad1d4e/7f6738bd-b68d-439b-b411-d3be964c40bd"
-					(reference "U3")
-					(unit 3)
+					(reference "U4")
+					(unit 5)
 				)
 			)
 		)
@@ -2157,146 +2203,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Opamp_Quad")
-		(at 204.47 148.59 0)
-		(unit 4)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5ec4653f-d1e9-4dfd-999e-52259a653645")
-		(property "Reference" "U3"
-			(at 204.47 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Opamp_Quad"
-			(at 204.47 140.97 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 204.47 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 204.47 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Quad operational amplifier"
-			(at 204.47 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
-			(at 204.47 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Name" "kicad_builtin_opamp_quad"
-			(at 204.47 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 204.47 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vcc 5=in2+ 6=in2- 7=out2 8=out3 9=in3- 10=in3+ 11=vee 12=in4+ 13=in4- 14=out4"
-			(at 204.47 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "9"
-			(uuid "e2428854-df8c-4982-a68d-016bfc8f7fc8")
-		)
-		(pin "12"
-			(uuid "67bccef6-9a7f-47ee-a974-4909c085b96d")
-		)
-		(pin "6"
-			(uuid "6bb5721d-e61a-44db-96e8-6a93498ba722")
-		)
-		(pin "1"
-			(uuid "e939ced4-9187-46bd-84ba-0a7539f98b8e")
-		)
-		(pin "11"
-			(uuid "893a3e4d-2a80-4d32-88a0-6fabb2ccb4a6")
-		)
-		(pin "4"
-			(uuid "53c0afbc-d271-49fd-b5d5-068f34be3778")
-		)
-		(pin "13"
-			(uuid "b9c93450-0ca4-442c-94c8-1d245e5fb957")
-		)
-		(pin "7"
-			(uuid "94ebe32a-cecf-4001-b36e-6bf0fc9b05cf")
-		)
-		(pin "5"
-			(uuid "55700557-aa9d-4d93-bfc2-225fe021eeb8")
-		)
-		(pin "2"
-			(uuid "3190d284-c586-4969-94cc-3d272883431a")
-		)
-		(pin "3"
-			(uuid "51bba360-2285-42da-bfeb-e8cc5b8263f5")
-		)
-		(pin "10"
-			(uuid "bd02d6c4-3f8a-4383-bb19-9fbb0dea120c")
-		)
-		(pin "8"
-			(uuid "a4c90b7c-69c3-4272-b5b2-31f7dddb6e2c")
-		)
-		(pin "14"
-			(uuid "534dbb28-8ded-486e-8f9c-bf1ddf0d5f4a")
-		)
-		(instances
-			(project ""
-				(path "/132f4570-4169-4ecf-b1f3-d724b5ad1d4e/7f6738bd-b68d-439b-b411-d3be964c40bd"
-					(reference "U3")
-					(unit 4)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 109.22 88.9 0)
 		(unit 1)
@@ -2362,146 +2268,6 @@
 				(path "/132f4570-4169-4ecf-b1f3-d724b5ad1d4e/7f6738bd-b68d-439b-b411-d3be964c40bd"
 					(reference "C2")
 					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Opamp_Quad")
-		(at 129.54 148.59 0)
-		(unit 3)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "62c20b80-53ea-4d28-a4b4-cf9f3f2b1862")
-		(property "Reference" "U1"
-			(at 129.54 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TL074 or OPA1644"
-			(at 129.54 140.97 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_DIP:DIP-14_W7.62mm_Socket"
-			(at 129.54 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 129.54 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Quad operational amplifier"
-			(at 129.54 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
-			(at 129.54 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Name" "kicad_builtin_opamp_quad"
-			(at 129.54 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 129.54 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vcc 5=in2+ 6=in2- 7=out2 8=out3 9=in3- 10=in3+ 11=vee 12=in4+ 13=in4- 14=out4"
-			(at 129.54 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "517245bf-32bd-4d9d-acca-172b01286645")
-		)
-		(pin "2"
-			(uuid "d232dd1d-8e86-4bb1-ae3b-53933810ecd0")
-		)
-		(pin "1"
-			(uuid "206159ac-bb7a-4d7b-b099-b4d7ac423711")
-		)
-		(pin "5"
-			(uuid "44b621fb-43e7-404b-8952-c97842d20393")
-		)
-		(pin "8"
-			(uuid "086dee67-4e16-4f88-a98e-e6fa3ade2678")
-		)
-		(pin "12"
-			(uuid "ac7d6b55-6968-4a29-9732-bb46820f300d")
-		)
-		(pin "4"
-			(uuid "82cbfa03-518e-4866-a18e-68da20efc5c5")
-		)
-		(pin "14"
-			(uuid "8123de96-8da7-4d38-9ce7-356410b4b762")
-		)
-		(pin "6"
-			(uuid "9dde0920-f007-4c13-acf3-cba9f4d8612d")
-		)
-		(pin "9"
-			(uuid "91756e64-23fd-4b89-89f0-57298ec96db5")
-		)
-		(pin "13"
-			(uuid "d7f5d96d-d4c0-4409-9886-58a2068815c7")
-		)
-		(pin "10"
-			(uuid "2ed77635-c09c-4b7d-8051-73a8d34d8ca1")
-		)
-		(pin "7"
-			(uuid "694a5bf7-2695-46f5-a931-de33b84ca910")
-		)
-		(pin "11"
-			(uuid "6bbb53c5-4813-40cc-bf2e-94a17e0001e1")
-		)
-		(instances
-			(project "ADSCP"
-				(path "/132f4570-4169-4ecf-b1f3-d724b5ad1d4e/7f6738bd-b68d-439b-b411-d3be964c40bd"
-					(reference "U1")
-					(unit 3)
 				)
 			)
 		)
@@ -2648,147 +2414,7 @@
 	)
 	(symbol
 		(lib_id "Device:Opamp_Quad")
-		(at 181.61 130.81 0)
-		(unit 2)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "89391d7b-6489-46dd-a296-3aa0289be7f6")
-		(property "Reference" "U3"
-			(at 181.61 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Opamp_Quad"
-			(at 181.61 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 181.61 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 181.61 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Quad operational amplifier"
-			(at 181.61 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
-			(at 181.61 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Name" "kicad_builtin_opamp_quad"
-			(at 181.61 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 181.61 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vcc 5=in2+ 6=in2- 7=out2 8=out3 9=in3- 10=in3+ 11=vee 12=in4+ 13=in4- 14=out4"
-			(at 181.61 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "9"
-			(uuid "e2428854-df8c-4982-a68d-016bfc8f7fc8")
-		)
-		(pin "12"
-			(uuid "67bccef6-9a7f-47ee-a974-4909c085b96d")
-		)
-		(pin "6"
-			(uuid "6bb5721d-e61a-44db-96e8-6a93498ba722")
-		)
-		(pin "1"
-			(uuid "e939ced4-9187-46bd-84ba-0a7539f98b8e")
-		)
-		(pin "11"
-			(uuid "893a3e4d-2a80-4d32-88a0-6fabb2ccb4a6")
-		)
-		(pin "4"
-			(uuid "53c0afbc-d271-49fd-b5d5-068f34be3778")
-		)
-		(pin "13"
-			(uuid "b9c93450-0ca4-442c-94c8-1d245e5fb957")
-		)
-		(pin "7"
-			(uuid "94ebe32a-cecf-4001-b36e-6bf0fc9b05cf")
-		)
-		(pin "5"
-			(uuid "55700557-aa9d-4d93-bfc2-225fe021eeb8")
-		)
-		(pin "2"
-			(uuid "3190d284-c586-4969-94cc-3d272883431a")
-		)
-		(pin "3"
-			(uuid "51bba360-2285-42da-bfeb-e8cc5b8263f5")
-		)
-		(pin "10"
-			(uuid "bd02d6c4-3f8a-4383-bb19-9fbb0dea120c")
-		)
-		(pin "8"
-			(uuid "a4c90b7c-69c3-4272-b5b2-31f7dddb6e2c")
-		)
-		(pin "14"
-			(uuid "534dbb28-8ded-486e-8f9c-bf1ddf0d5f4a")
-		)
-		(instances
-			(project ""
-				(path "/132f4570-4169-4ecf-b1f3-d724b5ad1d4e/7f6738bd-b68d-439b-b411-d3be964c40bd"
-					(reference "U3")
-					(unit 2)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Opamp_Quad")
-		(at 67.31 130.81 0)
+		(at 67.31 129.54 0)
 		(unit 5)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2797,7 +2423,7 @@
 		(fields_autoplaced yes)
 		(uuid "8ea21936-43da-4feb-9e25-4e057bfcdaf4")
 		(property "Reference" "U3"
-			(at 66.04 129.5399 0)
+			(at 66.04 128.2699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2805,8 +2431,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Opamp_Quad"
-			(at 66.04 132.0799 0)
+		(property "Value" "TL074 or OPA1644"
+			(at 66.04 130.8099 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2815,7 +2441,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 67.31 130.81 0)
+			(at 67.31 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2824,7 +2450,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 67.31 130.81 0)
+			(at 67.31 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2833,7 +2459,7 @@
 			)
 		)
 		(property "Description" "Quad operational amplifier"
-			(at 67.31 130.81 0)
+			(at 67.31 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2842,7 +2468,7 @@
 			)
 		)
 		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
-			(at 67.31 130.81 0)
+			(at 67.31 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2851,7 +2477,7 @@
 			)
 		)
 		(property "Sim.Name" "kicad_builtin_opamp_quad"
-			(at 67.31 130.81 0)
+			(at 67.31 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2860,7 +2486,7 @@
 			)
 		)
 		(property "Sim.Device" "SUBCKT"
-			(at 67.31 130.81 0)
+			(at 67.31 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2869,7 +2495,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vcc 5=in2+ 6=in2- 7=out2 8=out3 9=in3- 10=in3+ 11=vee 12=in4+ 13=in4- 14=out4"
-			(at 67.31 130.81 0)
+			(at 67.31 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2878,192 +2504,52 @@
 			)
 		)
 		(pin "9"
-			(uuid "e2428854-df8c-4982-a68d-016bfc8f7fc8")
+			(uuid "e2428854-df8c-4982-a68d-016bfc8f7fcb")
 		)
 		(pin "12"
-			(uuid "67bccef6-9a7f-47ee-a974-4909c085b96d")
+			(uuid "67bccef6-9a7f-47ee-a974-4909c085b970")
 		)
 		(pin "6"
-			(uuid "6bb5721d-e61a-44db-96e8-6a93498ba722")
+			(uuid "6bb5721d-e61a-44db-96e8-6a93498ba725")
 		)
 		(pin "1"
-			(uuid "e939ced4-9187-46bd-84ba-0a7539f98b8e")
+			(uuid "e939ced4-9187-46bd-84ba-0a7539f98b91")
 		)
 		(pin "11"
-			(uuid "893a3e4d-2a80-4d32-88a0-6fabb2ccb4a6")
+			(uuid "893a3e4d-2a80-4d32-88a0-6fabb2ccb4a9")
 		)
 		(pin "4"
-			(uuid "53c0afbc-d271-49fd-b5d5-068f34be3778")
+			(uuid "53c0afbc-d271-49fd-b5d5-068f34be377b")
 		)
 		(pin "13"
-			(uuid "b9c93450-0ca4-442c-94c8-1d245e5fb957")
+			(uuid "b9c93450-0ca4-442c-94c8-1d245e5fb95a")
 		)
 		(pin "7"
-			(uuid "94ebe32a-cecf-4001-b36e-6bf0fc9b05cf")
+			(uuid "94ebe32a-cecf-4001-b36e-6bf0fc9b05d2")
 		)
 		(pin "5"
-			(uuid "55700557-aa9d-4d93-bfc2-225fe021eeb8")
+			(uuid "55700557-aa9d-4d93-bfc2-225fe021eebb")
 		)
 		(pin "2"
-			(uuid "3190d284-c586-4969-94cc-3d272883431a")
+			(uuid "3190d284-c586-4969-94cc-3d272883431d")
 		)
 		(pin "3"
-			(uuid "51bba360-2285-42da-bfeb-e8cc5b8263f5")
+			(uuid "51bba360-2285-42da-bfeb-e8cc5b8263f8")
 		)
 		(pin "10"
-			(uuid "bd02d6c4-3f8a-4383-bb19-9fbb0dea120c")
+			(uuid "bd02d6c4-3f8a-4383-bb19-9fbb0dea120f")
 		)
 		(pin "8"
-			(uuid "a4c90b7c-69c3-4272-b5b2-31f7dddb6e2c")
+			(uuid "a4c90b7c-69c3-4272-b5b2-31f7dddb6e2f")
 		)
 		(pin "14"
-			(uuid "534dbb28-8ded-486e-8f9c-bf1ddf0d5f4a")
+			(uuid "534dbb28-8ded-486e-8f9c-bf1ddf0d5f4d")
 		)
 		(instances
 			(project ""
 				(path "/132f4570-4169-4ecf-b1f3-d724b5ad1d4e/7f6738bd-b68d-439b-b411-d3be964c40bd"
 					(reference "U3")
 					(unit 5)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Opamp_Quad")
-		(at 128.27 128.27 0)
-		(unit 4)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "921ac8f5-ab46-43b0-8dd4-5924ccc51bdc")
-		(property "Reference" "U1"
-			(at 128.27 118.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TL074 or OPA1644"
-			(at 128.27 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_DIP:DIP-14_W7.62mm_Socket"
-			(at 128.27 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 128.27 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Quad operational amplifier"
-			(at 128.27 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
-			(at 128.27 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Name" "kicad_builtin_opamp_quad"
-			(at 128.27 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 128.27 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vcc 5=in2+ 6=in2- 7=out2 8=out3 9=in3- 10=in3+ 11=vee 12=in4+ 13=in4- 14=out4"
-			(at 128.27 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "517245bf-32bd-4d9d-acca-172b01286646")
-		)
-		(pin "2"
-			(uuid "d232dd1d-8e86-4bb1-ae3b-53933810ecd1")
-		)
-		(pin "1"
-			(uuid "206159ac-bb7a-4d7b-b099-b4d7ac423712")
-		)
-		(pin "5"
-			(uuid "44b621fb-43e7-404b-8952-c97842d20394")
-		)
-		(pin "8"
-			(uuid "ba276bc3-bcae-4939-8ed2-c8d4f988a9fb")
-		)
-		(pin "12"
-			(uuid "4f923193-df8e-42cf-adaa-78939ba561ee")
-		)
-		(pin "4"
-			(uuid "82cbfa03-518e-4866-a18e-68da20efc5c6")
-		)
-		(pin "14"
-			(uuid "74e6cb45-283b-4a8b-9715-af8c4326e6c6")
-		)
-		(pin "6"
-			(uuid "9dde0920-f007-4c13-acf3-cba9f4d8612e")
-		)
-		(pin "9"
-			(uuid "631ccf53-f83e-4180-8048-c3362910c37d")
-		)
-		(pin "13"
-			(uuid "23e5d624-6407-46df-a62f-30c89063386b")
-		)
-		(pin "10"
-			(uuid "0f3a5a07-67bd-40e1-8fd2-cba12c3db502")
-		)
-		(pin "7"
-			(uuid "694a5bf7-2695-46f5-a931-de33b84ca911")
-		)
-		(pin "11"
-			(uuid "6bbb53c5-4813-40cc-bf2e-94a17e0001e2")
-		)
-		(instances
-			(project "ADSCP"
-				(path "/132f4570-4169-4ecf-b1f3-d724b5ad1d4e/7f6738bd-b68d-439b-b411-d3be964c40bd"
-					(reference "U1")
-					(unit 4)
 				)
 			)
 		)
@@ -3086,7 +2572,7 @@
 				)
 			)
 		)
-		(property "Value" "Opamp_Quad"
+		(property "Value" "TL074 or OPA1644"
 			(at 180.34 50.8 0)
 			(effects
 				(font
@@ -3158,46 +2644,46 @@
 			)
 		)
 		(pin "9"
-			(uuid "e2428854-df8c-4982-a68d-016bfc8f7fc8")
+			(uuid "e2428854-df8c-4982-a68d-016bfc8f7fcc")
 		)
 		(pin "12"
-			(uuid "67bccef6-9a7f-47ee-a974-4909c085b96d")
+			(uuid "67bccef6-9a7f-47ee-a974-4909c085b971")
 		)
 		(pin "6"
-			(uuid "6bb5721d-e61a-44db-96e8-6a93498ba722")
+			(uuid "6bb5721d-e61a-44db-96e8-6a93498ba726")
 		)
 		(pin "1"
-			(uuid "e939ced4-9187-46bd-84ba-0a7539f98b8e")
+			(uuid "e939ced4-9187-46bd-84ba-0a7539f98b92")
 		)
 		(pin "11"
-			(uuid "893a3e4d-2a80-4d32-88a0-6fabb2ccb4a6")
+			(uuid "893a3e4d-2a80-4d32-88a0-6fabb2ccb4aa")
 		)
 		(pin "4"
-			(uuid "53c0afbc-d271-49fd-b5d5-068f34be3778")
+			(uuid "53c0afbc-d271-49fd-b5d5-068f34be377c")
 		)
 		(pin "13"
-			(uuid "b9c93450-0ca4-442c-94c8-1d245e5fb957")
+			(uuid "b9c93450-0ca4-442c-94c8-1d245e5fb95b")
 		)
 		(pin "7"
-			(uuid "94ebe32a-cecf-4001-b36e-6bf0fc9b05cf")
+			(uuid "94ebe32a-cecf-4001-b36e-6bf0fc9b05d3")
 		)
 		(pin "5"
-			(uuid "55700557-aa9d-4d93-bfc2-225fe021eeb8")
+			(uuid "55700557-aa9d-4d93-bfc2-225fe021eebc")
 		)
 		(pin "2"
-			(uuid "3190d284-c586-4969-94cc-3d272883431a")
+			(uuid "3190d284-c586-4969-94cc-3d272883431e")
 		)
 		(pin "3"
-			(uuid "51bba360-2285-42da-bfeb-e8cc5b8263f5")
+			(uuid "51bba360-2285-42da-bfeb-e8cc5b8263f9")
 		)
 		(pin "10"
-			(uuid "bd02d6c4-3f8a-4383-bb19-9fbb0dea120c")
+			(uuid "bd02d6c4-3f8a-4383-bb19-9fbb0dea1210")
 		)
 		(pin "8"
-			(uuid "a4c90b7c-69c3-4272-b5b2-31f7dddb6e2c")
+			(uuid "a4c90b7c-69c3-4272-b5b2-31f7dddb6e30")
 		)
 		(pin "14"
-			(uuid "534dbb28-8ded-486e-8f9c-bf1ddf0d5f4a")
+			(uuid "534dbb28-8ded-486e-8f9c-bf1ddf0d5f4e")
 		)
 		(instances
 			(project ""
@@ -3787,37 +3273,37 @@
 			(uuid "d9f9f7e0-643f-4f3b-a1ac-3fc0b26c3d65")
 		)
 		(pin "5"
-			(uuid "44b621fb-43e7-404b-8952-c97842d20393")
+			(uuid "44b621fb-43e7-404b-8952-c97842d20396")
 		)
 		(pin "8"
 			(uuid "ba276bc3-bcae-4939-8ed2-c8d4f988a9fa")
 		)
 		(pin "12"
-			(uuid "ac7d6b55-6968-4a29-9732-bb46820f300d")
+			(uuid "ac7d6b55-6968-4a29-9732-bb46820f300e")
 		)
 		(pin "4"
-			(uuid "82cbfa03-518e-4866-a18e-68da20efc5c5")
+			(uuid "82cbfa03-518e-4866-a18e-68da20efc5c7")
 		)
 		(pin "14"
-			(uuid "8123de96-8da7-4d38-9ce7-356410b4b762")
+			(uuid "8123de96-8da7-4d38-9ce7-356410b4b763")
 		)
 		(pin "6"
-			(uuid "9dde0920-f007-4c13-acf3-cba9f4d8612d")
+			(uuid "9dde0920-f007-4c13-acf3-cba9f4d86130")
 		)
 		(pin "9"
 			(uuid "631ccf53-f83e-4180-8048-c3362910c37c")
 		)
 		(pin "13"
-			(uuid "d7f5d96d-d4c0-4409-9886-58a2068815c7")
+			(uuid "d7f5d96d-d4c0-4409-9886-58a2068815c8")
 		)
 		(pin "10"
 			(uuid "0f3a5a07-67bd-40e1-8fd2-cba12c3db501")
 		)
 		(pin "7"
-			(uuid "694a5bf7-2695-46f5-a931-de33b84ca910")
+			(uuid "694a5bf7-2695-46f5-a931-de33b84ca913")
 		)
 		(pin "11"
-			(uuid "6bbb53c5-4813-40cc-bf2e-94a17e0001e1")
+			(uuid "6bbb53c5-4813-40cc-bf2e-94a17e0001e3")
 		)
 		(instances
 			(project "ADSCP"

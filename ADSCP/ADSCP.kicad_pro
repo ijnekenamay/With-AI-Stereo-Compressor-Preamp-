@@ -415,7 +415,7 @@
     ],
     [
       "7f6738bd-b68d-439b-b411-d3be964c40bd",
-      "Input Buffer and VI Converter（SSI2164 input）"
+      "Input Buffer and VI Converter"
     ],
     [
       "70f79156-bfaa-41cd-908b-75036421af07",
@@ -424,6 +424,14 @@
     [
       "9a0a4327-39a8-4e8b-913c-f35a475a8204",
       "IV Converter & Make-up Gain"
+    ],
+    [
+      "47de73ca-0318-4417-b2e7-58ec17641450",
+      "Blend & Output"
+    ],
+    [
+      "0b4d4bfd-31c8-4c19-84f1-17153586bb4a",
+      "Sidechain 1 - Summing & Rectifier"
     ]
   ],
   "text_variables": {}
