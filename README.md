@@ -562,7 +562,21 @@ Point X ────→ OP_M Pin 12 (+入力)
                 GND                         GND
 ```
 ※ LEDには直列抵抗不要（LM3914内蔵）
-
+- 電源・基本設定:
+  - Pin 2 (V-): GNDに接続。
+  - Pin 3 (V+): +15Vに接続（C11 0.1µF でパスコンが入っているのもGoodです）。
+  - Pin 4 (RLO): GNDに接続。
+  - Pin 9 (MODE):
+  - Pin 3 (+15V) に直結。 → バー表示モード。
+- 信号入力:
+  - Pin 5 (SIG): LM3914_Pin5（バッファ出力）を接続。
+- 基準電圧・スケール調整:
+  - Pin 7 (REFOUT): Scale_Adjust_Trim の 1番端子に接続。
+  - Pin 8 (REFADJ): R32（2.2kΩ）を介してGNDに接続。
+  - Pin 6 (RHI): Scale_Adjust_Trim の 2番端子（ワイパー）に接続。
+- 表示部 (LED1〜10):
+  - Pin 1, 18, 17, 16, 15, 14, 13, 12, 11, 10: 各LEDのカソード (K) を接続。
+  - 各LEDのアノード (A): すべてまとめて+15Vに接続
 #### 表示ロジック
 
 SSI2164 の特性 [−33mV = 1dB GR]
