@@ -9,18 +9,6 @@
 	)
 	(lib_symbols)
 	(rectangle
-		(start 101.6 148.59)
-		(end 167.64 185.42)
-		(stroke
-			(width 1)
-			(type solid)
-		)
-		(fill
-			(type none)
-		)
-		(uuid 74a195f7-25c5-4f6e-ae54-4af11608281f)
-	)
-	(rectangle
 		(start 25.4 93.98)
 		(end 212.09 130.81)
 		(stroke
@@ -80,18 +68,6 @@
 			)
 		)
 		(uuid "7c89ac6a-925c-46fe-b2f8-04696925c55d")
-	)
-	(text "GR Meter schematics"
-		(exclude_from_sim no)
-		(at 133.35 144.018 0)
-		(effects
-			(font
-				(size 4 4)
-				(thickness 0.8)
-				(bold yes)
-			)
-		)
-		(uuid "80f8ec36-05fa-4af5-971c-88e200b30faa")
 	)
 	(text "Side chain schematics"
 		(exclude_from_sim no)
@@ -173,49 +149,6 @@
 			(project "ADSCP"
 				(path "/132f4570-4169-4ecf-b1f3-d724b5ad1d4e"
 					(page "6")
-				)
-			)
-		)
-	)
-	(sheet
-		(at 120.65 157.48)
-		(size 27.94 17.78)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0.0000)
-		)
-		(uuid "187ea13d-2cf3-4f61-b7ee-48a5d293ae6b")
-		(property "Sheetname" "GR Meter"
-			(at 126.492 155.702 0)
-			(effects
-				(font
-					(size 2 2)
-					(thickness 0.4)
-					(bold yes)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "Grmeter.kicad_sch"
-			(at 120.65 175.8446 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(instances
-			(project "ADSCP"
-				(path "/132f4570-4169-4ecf-b1f3-d724b5ad1d4e"
-					(page "7")
 				)
 			)
 		)
