@@ -87,40 +87,7 @@ Input Buffer
 
 ## 5. オーディオ・パス回路図
 ### Input BufferとV/I Converter（SSI2164入力）
-```text
-(Input Jack L)
-      │
-      ▼
-   C_in (10uF 無極性)
-      │
-      ├───────┐
-      │       │
-    R_pd    ┌─┴──┐
-    1MΩ     │ +  │
-      │     │OP1 │ (Input Buffer)
-     GND    │ -  │
-            └─┬──┘
-              │
-              ├──────────┬──────────────────→ [SIDECHAIN_L]
-              │          │ (信号分岐)
-              └──────────┼─────────┬────────→ [BLEND_DRY_L]
-                         │         │
-                         │      R_in (20k 1%)
-                         │         │
-                         │         └────┬───→ [VCA_IN_L] (SSI2164 Pin 2)
-                         │              │
-                         │         Stability Network
-                         │          ┌───┴───┐
-                         │          │       │
-                         │         220R     │
-                         │          │       │
-                         │        1200pF    │
-                         │          │       │
-                         │         GND      │
-                         │                  │
-                         └──────────────────┘
-                          (Feedback Loop)
-```
+![](inputbuffer_and_viconverter.png)
 - 構成：ボルテージフォロワ
 - 出力は
   - VCA用
