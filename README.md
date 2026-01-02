@@ -88,7 +88,7 @@ Input Buffer
 ## 5. オーディオ・パス回路図
 ### Input BufferとV/I Converter（SSI2164入力）
 ![](inputbuffer_and_viconverter.png)
-
+```mermaid
 flowchart TD
     IN_JACK["Input Jack L"] --> C1["C1<br/>10uF (Non-polar)"]
     C1 --> BUF_IN["+ Input (U1A)"]
@@ -107,7 +107,7 @@ flowchart TD
         R3 --> C2["C2<br/>1200pF"]
         C2 --> GND
     end
-
+```
 - 構成：ボルテージフォロワ
 - 出力は
   - VCA用
