@@ -201,43 +201,71 @@ Pin 15 ──/\/\/\── GND (20k)
 ### I/V Converter & Make-up Gain (Left)
 ![](ivconverter_and_makeupgain.png)
 ```mermaid
-flowchart LR
-    %% =====================
-    %% I/V Converter (U1B)
-    %% =====================
+graph TD
+    subgraph Input_Stage [入力セクション]
+        J1[Input_Jack_L] --> U1A[Buffer L: TL074/OPA1644]
+        J2[Input_Jack_R] --> U3A[Buffer R: TL074/OPA1644]
+        U1A --> BLEND_DRY_L
+        U1A --> VCA_IN_L
+        U3A --> BLEND_DRY_R
+        U3A --> VCA_IN_R
+    end
 
-    VCA_OUT[VCA_OUT_L_TO_IV] -->|R9 20k| IV_SUM
-    IV_SUM -->|C7 47pF| U1B_OUT
+    subgraph Sidechain_HPF [サイドチェインHPF]
+        BLEND_DRY_L --> SW2[Deep Punch SW]
+        BLEND_DRY_R --> SW2
+        SW2 -->|C18/C19| SIDECHAIN_L
+        SW2 -->|C18/C19| SIDECHAIN_R
+    end
 
-    GND1[GND] --> U1B_PLUS[U1B (+)]
-    IV_SUM --> U1B_MINUS[U1B (-)]
+    subgraph Sidechain_Process [サイドチェイン制御系]
+        SIDECHAIN_L & SIDECHAIN_R --> SC1[SC-1: Summing & Rectifier]
+        SC1 -->|RECTIFIED_DC| SC2[SC-2: Threshold & Ratio]
+        
+        Threshold_Pot((Threshold)) --> SC2
+        Ratio_Pot((Ratio)) --> SC2
+        
+        SC2 -->|ST_LINK_TIMING| SC3[SC-3: Timing Network]
+        Attack_Pot((Attack)) --> SC3
+        Release_Pot((Release)) --> SC3
+        
+        SC3 -->|Point_X| CV_Buffer[U4D: CV Inverter/Buffer]
+        CV_Buffer --> CV_Trim_L & CV_Trim_R
+        CV_Trim_L --> CV_IN_L
+        CV_Trim_R --> CV_IN_R
+    end
 
-    U1B_PLUS --> U1B[U1B TL074/OPA1644]
-    U1B_MINUS --> U1B
-    U1B -->|Pin7| U1B_OUT[U1B OUT]
+    subgraph Metering [GRメーター]
+        Point_X --> U5A[Voltage Follower]
+        U5A -->|LM3914_Pin5| U6[LM3914 LED Driver]
+        U6 --> LED_Bar[LED Bar Graph]
+    end
 
-    %% =====================
-    %% Make-up Gain (U1C)
-    %% =====================
+    subgraph VCA_Makeup [VCA & メイクアップゲイン]
+        VCA_IN_L & CV_IN_L --> U2[VCA: SSI2164]
+        VCA_IN_R & CV_IN_R --> U2
+        
+        U2 -->|VCA_OUT_L/R_TO_IV| U1B_U3B[I/V Converter]
+        U1B_U3B --> U1C_U3C[Makeup Gain Stage]
+        Makeup_Pot((Makeup Gain)) --> U1C_U3C
+        U1C_U3C --> MAKEUP_OUT_L & MAKEUP_OUT_R
+    end
 
-    U1B_OUT -->|R10 10k| SUM_NODE
+    subgraph Output_Stage [出力 & サチュレーション]
+        MAKEUP_OUT_L & MAKEUP_OUT_R --> SW1[Diode Saturator SW]
+        SW1 --> Blend_Pot[Blend L/R Pot]
+        BLEND_DRY_L & BLEND_DRY_R --> Blend_Pot
+        
+        Blend_Pot --> U1D_U3D[Output Buffer]
+        U1D_U3D --> J7[4PDT Bypass SW]
+        J7 --> J3[Output_Jack_L]
+        J7 --> J4[Output_Jack_R]
+    end
 
-    SUM_NODE --> U1C_MINUS[U1C (-)]
-    GND2[GND] --> U1C_PLUS[U1C (+)]
-
-    U1C_PLUS --> U1C[U1C TL074/OPA1644]
-    U1C_MINUS --> U1C
-    U1C -->|Pin8| U1C_OUT[MAKEUP_OUT_L]
-
-    %% =====================
-    %% Gain Control Feedback
-    %% =====================
-
-    U1C_OUT -->|R11 10k| POT_R[POT 100kB (3)]
-    POT_R --> POT_W[POT Wiper (2)]
-    POT_W --> U1C_MINUS
-
-    POT_L[POT (1) OPEN]
+    %% スタイル設定
+    style U2 fill:#f9f,stroke:#333,stroke-width:2px
+    style SC3 fill:#dfd,stroke:#333
+    style U6 fill:#bbf,stroke:#333
 
 ```
 
